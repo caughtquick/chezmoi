@@ -1,0 +1,217 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  font-size: 12.5px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(21, 18, 27, 0);
+  background: #1e1e2e;
+  color: #cdd6f4;
+}
+
+tooltip {
+  background: #1e1e2e;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #11111b;
+}
+
+#workspaces button {
+  padding: 5px;
+  color: #b4befe;
+  margin-right: 5px;
+}
+
+#workspaces button.active {
+  color: #a6adc8;
+  color: #cba6f7;
+}
+
+#workspaces button.focused {
+  color: #1e1e2e;
+  background: #cba6f7;
+  border-radius: 10px;
+}
+
+#workspaces button.urgent {
+  color: #11111b;
+  background: #f38ba8;
+  border-radius: 10px;
+}
+
+#workspaces button:hover {
+  background: #313244;
+  color: #cdd6f4;
+  border-radius: 20px;
+}
+
+#cpu {
+  color: #fab387;
+  border-radius: 15px 0px 0px 15px; /* Round left only */
+  border-right: 0px; 
+  margin: 5px 0px;
+  padding: 0px 10px;
+}
+
+#memory {
+  color: #89b4fa; /* Blue for contrast */
+  border-radius: 0px; /* No rounding in the middle */
+  border-left: 0px;
+  border-right: 0px;
+  margin: 5px 0px;
+  padding: 0px 10px;
+}
+
+#battery {
+  color: #a6e3a1;
+  border-radius: 0px 15px 15px 0px; /* Round right only */
+  border-left: 0px;
+  /* margin-right adds space before the next separate module */
+  margin: 5px 10px 5px 0px; 
+  padding: 0px 15px 0px 10px;
+}
+
+/* Ensure all three have the same base style */
+#cpu, #memory, #battery {
+  background: #313244;
+}
+
+#custom-power_profile,
+#window,
+#clock,
+#pulseaudio,
+#network,
+#temperature,
+#workspaces,
+#tray,
+#idle_inhibitor,
+#backlight,
+#placeholder {
+  background: #1e1e2e;
+  background: #313244;
+  opacity: 0.8;
+  padding: 0px 10px;
+  margin: 3px 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #181825;
+}
+
+#temperature {
+  border-radius: 10px 0px 0px 10px;
+}
+
+#temperature.critical {
+  color: #eba0ac;
+}
+
+#bluetooth {
+  background: #313244;
+  color: #89b4fa; /* Blue icon */
+  border-radius: 15px;
+  margin: 5px 10px 5px 0px;
+  padding: 0px 15px;
+  border: 1px solid #181825;
+}
+
+/* Turns the pill green when a device is connected */
+#bluetooth.connected {
+  color: #a6e3a1;
+}
+
+/* Hides the module entirely when Bluetooth is off to save space */
+#bluetooth.off {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none
+}
+#backlight {
+  border-radius: 0px;
+  border-left: none;
+  border-right: none;
+}
+
+#idle_inhibitor {
+  border-radius: 15px;
+  margin-right: 10px;
+  padding: 0px 10px;
+}
+
+#tray {
+  border-radius: 15px;
+  margin-right: 10px;
+  padding: 0px 10px;
+}
+
+#workspaces {
+  background: #1e1e2e;
+  background: #313244;
+  border-radius: 15px;
+  margin-left: 10px;
+  padding-right: 0px;
+  padding-left: 5px;
+}
+
+#window {
+  border-radius: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+#clock {
+  color: #fab387;
+  border-radius: 15px;
+  margin-right: 10px;
+  padding: 0 10px;
+  border-right: 0px;
+}
+
+#network {
+  color: #f9e2af;
+  border-radius: 0px 15px 15px 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+#bluetooth {
+  color: #89b4fa;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+#pulseaudio {
+  color: #89b4fa;
+  border-left: 0px;
+  border-right: 0px;
+  padding-left: 10px;
+  border-radius: 15px 0px 0px 15px;
+}
+
+#pulseaudio.microphone {
+  color: #cba6f7;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0px 15px 15px 0px;
+  margin-right: 10px;
+}
+
+
+#mpris {
+  color: #cba6f7; /* Catppuccin Mauve to match your workspace active color */
+  background: #313244;
+  margin: 5px 0px 5px 10px;
+  padding: 0px 10px;
+  border: 1px solid #181825;
+  border-radius: 15px;
+  color: #cba6f7;
+  min-height: 0;
+}
+

@@ -1,0 +1,169 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 39,
+  "modules-left": ["sway/workspaces", "mpris" ],
+  "modules-right": [
+    "tray" ,
+    "idle_inhibitor" ,
+    "cpu" ,
+    "memory" ,
+    "battery",
+    "pulseaudio",
+    "network",
+    "clock" ],
+  "sway/window": {
+    "format": "{}"
+  },
+
+  "workspace": {
+    "format": " {}",
+    "disable-scroll": false
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "on-click": "activate"
+},
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+"clock": {
+    "interval": 60,
+    "format": "  {:%H:%M}", // Standard display: Clock icon + Time
+    "format-alt": "  {:%m/%d/%Y}", // Click display: Calendar icon + Date
+    "max-length": 25,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+        "mode": "month",
+        "on-scroll": 1,
+        "format": {
+            "months": "<span color='#ffead3'><b>{}</b></span>",
+            "days": "<span color='#ecc6d9'><b>{}</b></span>",
+            "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+    }
+},
+"mpris": {
+    "format": "{player_icon} {artist} - {title}", // Removed all time/position tags
+    "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+    "player-icons": {
+        "default": "▶"
+    },
+    "status-icons": {
+        "paused": "⏸"
+    },
+    "max-length": 35
+},
+	"pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} ",
+    "format-muted": "Muted 󰝟",
+    "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", ""]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"]
+},
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " Muted",
+    "on-click": "pamixer --default-source -t",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": " ",
+        "deactivated": " "
+    }
+  },
+
+"cpu": {
+    "interval": 10,
+    "format": "{usage}%  ", // CPU Icon:  (U+F4BC)
+    "max-length": 10
+},
+
+"memory": {
+    "interval": 30,
+    "format": "{percentage}%  ", // RAM Icon:  (U+E266)
+    "max-length": 10
+},
+
+  "temperature": {
+    "thermal-zone": 1,
+    "format": "{temperatureF}°F ",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C "
+  },
+
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "  {essid} {signalStrength}%",
+    "format-ethernet": "{ipaddr}/{cidr}",
+    "tooltip-format": "{essid} - {ifname} via {gwaddr}",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " {num_connections}",
+    "tooltip-format": "{device_alias}",
+    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}"
+  },
+
+  "custom/launch_fuzzel": {
+    "format": "  ",
+    "on-click": "pkill fuzzel; fuzzel",
+    "tooltip": false
+  },
+
+  "battery": {
+        "bat": "BAT1",
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "",
+        "format-full": "100% ",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+  "custom/launch_wlogout": {
+    "format": "⏻  ",
+    "on-click": "wlogout",
+    "tooltip": false
+  },
+
+}
+
+
