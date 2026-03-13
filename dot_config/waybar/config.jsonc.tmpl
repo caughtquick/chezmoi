@@ -12,7 +12,9 @@
     "idle_inhibitor" ,
     "cpu" ,
     "memory" ,
+{{- if eq .chezmoi.hostname "papaya" }}
     "battery",
+{{- end }}
     "pulseaudio",
     "network",
     "clock" ],

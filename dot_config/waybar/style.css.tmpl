@@ -60,13 +60,19 @@ tooltip {
 
 #memory {
   color: #89b4fa; /* Blue for contrast */
+{{- if eq .chezmoi.hostname "papaya" }}
   border-radius: 0px; /* No rounding in the middle */
-  border-left: 0px;
   border-right: 0px;
   margin: 5px 0px;
+{{- else }}
+  border-radius: 0px 15px 15px 0px; /* Round right when no battery */
+  margin: 5px 10px 5px 0px; 
+{{- end }}
+  border-left: 0px;
   padding: 0px 10px;
 }
 
+{{- if eq .chezmoi.hostname "papaya" }}
 #battery {
   color: #a6e3a1;
   border-radius: 0px 15px 15px 0px; /* Round right only */
@@ -75,9 +81,10 @@ tooltip {
   margin: 5px 10px 5px 0px; 
   padding: 0px 15px 0px 10px;
 }
+{{- end }}
 
 /* Ensure all three have the same base style */
-#cpu, #memory, #battery {
+#cpu, #memory{{ if eq .chezmoi.hostname "papaya" }}, #battery{{ end }} {
   background: #313244;
 }
 
