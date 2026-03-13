@@ -13,7 +13,11 @@ set $down j
 set $up k
 set $right l
 
+{{ if eq .chezmoi.hostname "papaya" -}}
 set $term footclient distrobox enter dev
+{{ else -}}
+set $term footclient
+{{ end -}}
 set $menu fuzzel
 
 # The tools I use
