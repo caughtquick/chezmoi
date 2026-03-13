@@ -58,7 +58,9 @@ client.background        $base
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+{{ if eq .chezmoi.hostname "papaya" -}}
     bindsym $mod+Shift+Return exec footclient
+{{ end -}}
 
     # Kill focused window
     bindsym $mod+q kill
