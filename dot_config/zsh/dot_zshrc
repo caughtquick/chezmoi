@@ -5,7 +5,7 @@ fi
 
 # Antidote setup
 source /usr/share/zsh-antidote/antidote.zsh
-antidote load ${HOME}/.zsh_plugins.txt
+antidote load ${ZDOTDIR}/plugins.txt
 
 # Set Variables
 export EDITOR=nvim
@@ -19,8 +19,8 @@ alias ls='eza --icons --color=always --group-directories-first'
 alias ll='eza -l --icons --color=always --group-directories-first'
 alias la='eza -la --icons --color=always --group-directories-first'
 
-# History setup
-HISTFILE=$HOME/.zsh_history
+# History setup (Moving history out of $HOME)
+HISTFILE=$HOME/.local/share/zsh/history
 SAVEHIST=10000
 HISTSIZE=10000
 setopt SHARE_HISTORY
@@ -33,5 +33,5 @@ if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Source Powerlevel10k from its new home
+[[ ! -f ${ZDOTDIR}/p10k.zsh ]] || source ${ZDOTDIR}/p10k.zsh

@@ -1,0 +1,2 @@
+# Set ZDOTDIR to move .zshrc and other files out of $HOME
+export ZDOTDIR=$HOME/.config/zsh
