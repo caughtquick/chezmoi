@@ -15,6 +15,9 @@ export PATH=$HOME/.local/bin:$PATH
 alias vim='nvim'
 alias cat='bat'
 alias cd="z"
+alias ls='eza --icons --color=always --group-directories-first'
+alias ll='eza -l --icons --color=always --group-directories-first'
+alias la='eza -la --icons --color=always --group-directories-first'
 
 # History setup
 HISTFILE=$HOME/.zsh_history
