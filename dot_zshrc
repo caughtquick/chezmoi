@@ -4,7 +4,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Antidote setup
-source ${HOME}/.local/share/antidote/antidote.zsh
+source /usr/share/zsh-antidote/antidote.zsh
 antidote load ${HOME}/.zsh_plugins.txt
 
 # Set Variables
