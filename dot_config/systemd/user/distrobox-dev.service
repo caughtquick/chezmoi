@@ -1,0 +1,11 @@
+[Unit]
+Description=Start Distrobox 'dev' container on startup
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/distrobox start dev
+
+[Install]
+WantedBy=default.target
