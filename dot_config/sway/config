@@ -54,6 +54,7 @@ client.background        $base
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec footclient
 
     # Kill focused window
     bindsym $mod+q kill
