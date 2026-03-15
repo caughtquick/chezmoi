@@ -1,0 +1,47 @@
+name: bar
+position: top
+height: 39
+anchor_to_edges: true
+
+start:
+  - type: workspaces
+    all_monitors: true
+    sort: name
+
+  - type: music
+    name: music
+    format: "{title} - {artist}"
+
+end:
+  - type: tray
+    name: tray
+
+  - type: script
+    name: cpu
+    cmd: "~/.config/ironbar/scripts/cpu.sh"
+    interval: 10000
+  
+  - type: script
+    name: memory
+    cmd: "~/.config/ironbar/scripts/memory.sh"
+    interval: 10000
+
+  - type: script
+    name: battery
+    cmd: "~/.config/ironbar/scripts/battery.sh"
+    interval: 30000
+    on_click_left: "distrobox-host-exec upower -i /org/freedesktop/UPower/devices/battery_BAT1"
+
+  - type: volume
+    name: pulseaudio
+    format: "{percentage}% {icon}"
+
+  - type: script
+    name: network
+    cmd: "~/.config/ironbar/scripts/network.sh"
+    interval: 30000
+    on_click_left: "distrobox-host-exec nm-connection-editor"
+
+  - type: clock
+    name: clock
+    format: "  %H:%M"

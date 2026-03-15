@@ -1,0 +1,9 @@
+[Unit]
+Description=XFCE Polkit Authentication Agent
+
+[Service]
+ExecStart=/usr/libexec/xfce-polkit
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,123 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  font-size: 12.5px;
+  min-height: 0;
+}
+
+/* Bar Background */
+window#bar, .background, #bar {
+  background-color: #1e1e2e;
+  background: #1e1e2e;
+  color: #cdd6f4;
+}
+
+.widget {
+  background: #313244;
+  opacity: 0.8;
+  padding: 0px 10px;
+  margin: 4px 0px;
+  border: 1px solid #181825;
+  border-radius: 15px;
+}
+
+/* System Pill (CPU, Memory, Battery) */
+#cpu {
+  color: #fab387;
+  border-radius: 15px 0px 0px 15px;
+  border-right: 0px;
+}
+
+#memory {
+  color: #89b4fa;
+  border-radius: 0px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#battery {
+  color: #a6e3a1;
+  border-radius: 0px 15px 15px 0px;
+  border-left: 0px;
+  margin-right: 10px;
+}
+
+/* Audio and Network Pill */
+#pulseaudio {
+  color: #89b4fa;
+  border-radius: 15px 0px 0px 15px;
+  border-right: 0px;
+}
+
+#network {
+  color: #f9e2af;
+  border-radius: 0px 15px 15px 0px;
+  border-left: 0px;
+  margin-right: 10px;
+}
+
+#clock {
+  color: #fab387;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+/* --- WORKSPACES (UNTOUCHED WORKING STATE) --- */
+.workspaces {
+  background: #313244;
+  border-radius: 15px;
+  margin-left: 10px;
+  padding: 0 5px;
+  border: 1px solid #181825;
+}
+
+.workspaces .item {
+  padding: 5px 8px;
+  color: #b4befe;
+  background: transparent;
+  border-radius: 10px;
+}
+
+.workspaces .item.focused {
+  color: #1e1e2e;
+  background: #cba6f7;
+  border-radius: 10px;
+}
+
+.workspaces .item.urgent {
+  color: #11111b;
+  background: #f38ba8;
+}
+
+.workspaces .item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #cdd6f4;
+}
+/* --------------------------------------------- */
+
+#music {
+  color: #cba6f7;
+  background: #313244;
+  margin-left: 10px;
+  border-radius: 15px;
+}
+
+/* --- TRAY SURGERY --- */
+
+/* Target the items inside the tray pill to remove grey boxes */
+#tray button, #tray image, #tray .item, #tray box {
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Fix for the "shrinking but not disappearing" pill */
+#tray:empty {
+  background: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
