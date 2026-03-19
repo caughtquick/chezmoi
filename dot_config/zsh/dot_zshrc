@@ -18,6 +18,7 @@ alias cd="z"
 alias ls='eza --icons --color=always --group-directories-first'
 alias ll='eza -l --icons --color=always --group-directories-first'
 alias la='eza -la --icons --color=always --group-directories-first'
+alisa dhe='distrobox-host-exec'
 
 # History setup (Moving history out of $HOME)
 HISTFILE=$HOME/.local/share/zsh/history
