@@ -95,7 +95,7 @@ window#bar, .background, #bar {
   background: rgba(255, 255, 255, 0.1);
   color: #cdd6f4;
 }
-/* --------------------------------------------- */
+/* ------------------------------------------- */
 
 #music {
   color: #cba6f7;
@@ -106,18 +106,31 @@ window#bar, .background, #bar {
 
 /* --- TRAY SURGERY --- */
 
-/* Target the items inside the tray pill to remove grey boxes */
-#tray button, #tray image, #tray .item, #tray box {
-  background: none !important;
+/* 1. Target EVERYTHING inside the tray pill to remove grey boxes */
+#tray button, 
+#tray image, 
+#tray .item, 
+#tray box, 
+#tray widget,
+#tray * {
+  background: transparent !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-/* Fix for the "shrinking but not disappearing" pill */
+/* 2. Style the tray pill normally (keeps the pill shape) */
+#tray {
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+/* 3. Aggressive rule to make the pill DISAPPEAR when empty */
 #tray:empty {
-  background: none !important;
+  background: transparent !important;
   border: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  min-width: 0 !important;
+  opacity: 0;
 }
