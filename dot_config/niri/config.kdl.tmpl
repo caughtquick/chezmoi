@@ -35,7 +35,6 @@ output "eDP-1" {
 }
 
 layout {
-    title-bar { off; }
     gaps 3
     center-focused-column "never"
 
@@ -64,10 +63,12 @@ layout {
 }
 
 spawn-at-startup "foot" "-s"
-spawn-at-startup "waybar"
+spawn-at-startup "waybar" "-c" "{{ .chezmoi.homeDir }}/.config/waybar/config-niri.jsonc"
 spawn-at-startup "swaybg" "-i" "/home/abhijit/Pictures/wallpapers/sf_1.jpg" "-m" "fill"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "color-scheme" "prefer-dark"
+
+prefer-no-csd
 
 // Idle configuration
 spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock" "timeout" "420" "loginctl suspend" "after-resume" "niri msg action power-on-monitors" "before-sleep" "swaylock" "lock" "swaylock"

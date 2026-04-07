@@ -6,7 +6,7 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 39,
-  "modules-left": ["sway/workspaces", "mpris" ],
+  "modules-left": ["{{ .wm }}/workspaces", "mpris" ],
   "modules-right": [
     "tray" ,
     "idle_inhibitor" ,
@@ -18,7 +18,7 @@
     "pulseaudio",
     "network",
     "clock" ],
-  "sway/window": {
+  "{{ .wm }}/window": {
     "format": "{}"
   },
 
@@ -26,7 +26,7 @@
     "format": " {}",
     "disable-scroll": false
   },
-  "sway/workspaces": {
+  "{{ .wm }}/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{icon}",
@@ -167,5 +167,3 @@
   },
 
 }
-
-

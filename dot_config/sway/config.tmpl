@@ -87,7 +87,7 @@ client.background        $base
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Function Keys
-# 
+#
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -221,8 +221,8 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-bar { 
-     swaybar_command waybar
+bar {
+     swaybar_command waybar -c {{ .chezmoi.homeDir }}/.config/waybar/config-sway.jsonc
 }
 
 # SwayFX Config
