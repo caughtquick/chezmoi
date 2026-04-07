@@ -2,7 +2,7 @@
 {{ $term := "footclient" -}}
 {{ $term_shift := "" -}}
 {{ if eq .chezmoi.hostname "papaya" -}}
-{{   $term = "footclient distrobox enter dev" -}}
+{{   $term = "footclient\" \"distrobox\" \"enter\" \"dev" -}}
 {{   $term_shift = "footclient" -}}
 {{ end -}}
 {{ $menu := "fuzzel" -}}
@@ -87,11 +87,6 @@ binds {
     // Reload the configuration file
     Mod+Shift+C { spawn "niri" "msg" "action" "reload-config"; }
 
-    // Screenshots using Shotman
-    Mod+Shift+R { spawn "shotman" "-c" "output"; }
-    Mod+Shift+T { spawn "shotman" "-c" "window"; }
-    Mod+Shift+Y { spawn "shotman" "-c" "region"; }
-
     // Exit niri
     Mod+Shift+E { quit; }
 
@@ -136,7 +131,7 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
-    Mod+0 { focus-workspace 10; }
+    Mod+C { toggle-overview; }
 
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
@@ -147,7 +142,6 @@ binds {
     Mod+Shift+7 { move-column-to-workspace 7; }
     Mod+Shift+8 { move-column-to-workspace 8; }
     Mod+Shift+9 { move-column-to-workspace 9; }
-    Mod+Shift+0 { move-column-to-workspace 10; }
 
     // Layout
     Mod+F { maximize-column; }
@@ -161,6 +155,9 @@ binds {
     Mod+Minus { set-column-width "-10%"; }
     Mod+Shift+Plus { set-window-height "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
+
+    // Shortcuts Tooltip
+    Mod+Shift+Slash { show-hotkey-overlay; }
 }
 
 // Window rules
