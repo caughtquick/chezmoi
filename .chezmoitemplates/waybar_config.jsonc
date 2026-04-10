@@ -78,7 +78,7 @@
         "default": ["", ""]
     },
     "scroll-step": 1,
-    "on-click": "pavucontrol",
+    "on-click": "flatpak run com.saivert.pwvucontrol",
     "ignored-sinks": ["Easy Effects Sink"]
 },
 
