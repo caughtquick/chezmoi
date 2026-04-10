@@ -39,9 +39,9 @@ layout {
     center-focused-column "never"
 
     preset-column-widths {
-        proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 0.33333
     }
 
     default-column-width { proportion 0.5; }
@@ -62,12 +62,12 @@ layout {
     background-color "#1e1e2e"
 }
 
+spawn-at-startup "systemctl --user start graphical-session.target"
 spawn-at-startup "foot" "-s"
 spawn-at-startup "waybar" "-c" "{{ .chezmoi.homeDir }}/.config/waybar/config-niri.jsonc"
 spawn-at-startup "swaybg" "-i" "/home/abhijit/Pictures/wallpapers/sf_1.jpg" "-m" "fill"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "gsettings" "set" "org.gnome.desktop.interface" "color-scheme" "prefer-dark"
-
 prefer-no-csd
 
 // Idle configuration

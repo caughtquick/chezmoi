@@ -1,9 +1,15 @@
 [Unit]
 Description=XFCE Polkit Authentication Agent
+# This ensures the service stops if the graphical session ends
+PartOf=graphical-session.target
+After=graphical-session.target
 
 [Service]
 ExecStart=/usr/libexec/xfce-polkit
 Restart=on-failure
+# Give it a small buffer for D-Bus to register
+RestartSec=1
 
 [Install]
-WantedBy=default.target
+# This is the "hook" that waits for the target to be reached
+WantedBy=graphical-session.target
