@@ -14,14 +14,11 @@ set $up k
 set $right l
 
 {{ if eq .chezmoi.hostname "papaya" -}}
-set $term footclient distrobox enter dev
+set $term ghostty --initial-command="distrobox enter dev"
 {{ else -}}
-set $term footclient
+set $term ghostty
 {{ end -}}
 set $menu fuzzel
-
-# The tools I use
-exec foot -s
 
 # System tools
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
@@ -57,7 +54,7 @@ client.background        $base
     # Start a terminal
     bindsym $mod+Return exec $term
 {{ if eq .chezmoi.hostname "papaya" -}}
-    bindsym $mod+Shift+Return exec footclient
+    bindsym $mod+Shift+Return exec ghostty
 {{ end -}}
 
     # Kill focused window

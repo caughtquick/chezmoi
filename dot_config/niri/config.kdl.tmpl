@@ -1,9 +1,9 @@
 // Catppuccin Mocha Colors
-{{ $term := "footclient" -}}
+{{ $term := "ghostty" -}}
 {{ $term_shift := "" -}}
 {{ if eq .chezmoi.hostname "papaya" -}}
-{{   $term = "footclient\" \"distrobox\" \"enter\" \"dev" -}}
-{{   $term_shift = "footclient" -}}
+{{   $term = "ghostty\" \"--initial-command=distrobox enter dev" -}}
+{{   $term_shift = "ghostty" -}}
 {{ end -}}
 {{ $menu := "fuzzel" -}}
 
@@ -63,7 +63,6 @@ layout {
 }
 
 spawn-at-startup "systemctl --user start graphical-session.target"
-spawn-at-startup "foot" "-s"
 spawn-at-startup "waybar" "-c" "{{ .chezmoi.homeDir }}/.config/waybar/config-niri.jsonc"
 spawn-at-startup "swaybg" "-i" "/home/abhijit/Pictures/wallpapers/sf_1.jpg" "-m" "fill"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
@@ -131,6 +130,9 @@ binds {
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
     Mod+C { toggle-overview; }
+
+    // Screenshot
+    Mod+U { screenshot; }
 
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
