@@ -1,7 +1,7 @@
 # Core Plugins
 zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
 
 # Theme
 romkatv/powerlevel10k
