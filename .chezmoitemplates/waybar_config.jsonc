@@ -30,7 +30,8 @@
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{icon}",
-    "on-click": "activate"
+    "on-click": "activate",
+    "hide-empty": true,
 },
 
   "tray": {
