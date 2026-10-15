@@ -1,7 +1,8 @@
 {
   "layer": "top",
   "position": "top",
-  "mod": "dock",
+  "mode": "top",
+  "modifier-reset": "release",
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
@@ -9,12 +10,9 @@
   "modules-left": ["{{ .wm }}/workspaces", "mpris" ],
   "modules-right": [
     "tray" ,
-    "idle_inhibitor" ,
     "cpu" ,
     "memory" ,
-{{- if eq .chezmoi.hostname "papaya" }}
     "battery",
-{{- end }}
     "pulseaudio",
     "network",
     "clock" ],
@@ -58,10 +56,10 @@
     "format": "{player_icon} {artist} - {title}", // Removed all time/position tags
     "format-paused": "{status_icon} <i>{artist} - {title}</i>",
     "player-icons": {
-        "default": "▶"
+        "default": "⏸"
     },
     "status-icons": {
-        "paused": "⏸"
+        "paused": "▶"
     },
     "max-length": 35
 },
@@ -146,7 +144,7 @@
   },
 
   "battery": {
-        "bat": "BAT1",
+        "bat": "BAT0",
         "states": {
             // "good": 95,
             "warning": 30,

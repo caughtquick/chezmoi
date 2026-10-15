@@ -21,7 +21,7 @@ alias la='eza -la --icons --color=always --group-directories-first'
 alias dhe='distrobox-host-exec'
 
 # History setup (Moving history out of $HOME)
-HISTFILE=$HOME/.local/share/zsh/history
+HISTFILE=~/.local/share/zsh/history
 SAVEHIST=10000
 HISTSIZE=10000
 setopt SHARE_HISTORY

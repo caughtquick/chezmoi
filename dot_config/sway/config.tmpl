@@ -13,11 +13,7 @@ set $down j
 set $up k
 set $right l
 
-{{ if eq .chezmoi.hostname "papaya" -}}
 set $term ghostty --initial-command="distrobox enter dev"
-{{ else -}}
-set $term ghostty
-{{ end -}}
 set $menu fuzzel
 
 # System tools
@@ -53,11 +49,8 @@ client.background        $base
 #
     # Start a terminal
     bindsym $mod+Return exec $term
-{{ if eq .chezmoi.hostname "papaya" -}}
-    bindsym $mod+Shift+Return exec ghostty
-{{ end -}}
-
-    # Kill focused window
+bindsym $mod+Shift+Return exec ghostty
+# Kill focused window
     bindsym $mod+q kill
 
     # Start your launcher
@@ -217,10 +210,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-bar {
-     swaybar_command 'waybar -c ~/.config/waybar/config-sway.jsonc'
-}
 
 # SwayFX Config
 #corner_radius 10

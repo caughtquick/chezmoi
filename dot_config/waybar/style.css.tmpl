@@ -8,9 +8,9 @@
 }
 
 window#waybar {
-  background: rgba(21, 18, 27, 0);
-  background: #1e1e2e;
-  color: #cdd6f4;
+  background: #11111b;
+  background: #11111b;
+  color: #11111b;
 }
 
 tooltip {
@@ -53,38 +53,30 @@ tooltip {
 #cpu {
   color: #fab387;
   border-radius: 15px 0px 0px 15px; /* Round left only */
-  border-right: 0px; 
+  border-right: 0px;
   margin: 5px 0px;
   padding: 0px 10px;
 }
 
 #memory {
   color: #89b4fa; /* Blue for contrast */
-{{- if eq .chezmoi.hostname "papaya" }}
   border-radius: 0px; /* No rounding in the middle */
   border-right: 0px;
   margin: 5px 0px;
-{{- else }}
-  border-radius: 0px 15px 15px 0px; /* Round right when no battery */
-  margin: 5px 10px 5px 0px; 
-{{- end }}
   border-left: 0px;
   padding: 0px 10px;
 }
-
-{{- if eq .chezmoi.hostname "papaya" }}
 #battery {
   color: #a6e3a1;
   border-radius: 0px 15px 15px 0px; /* Round right only */
   border-left: 0px;
   /* margin-right adds space before the next separate module */
-  margin: 5px 10px 5px 0px; 
+  margin: 5px 10px 5px 0px;
   padding: 0px 15px 0px 10px;
 }
-{{- end }}
 
 /* Ensure all three have the same base style */
-#cpu, #memory{{ if eq .chezmoi.hostname "papaya" }}, #battery{{ end }} {
+#cpu, #memory, #battery {
   background: #313244;
 }
 
@@ -221,4 +213,3 @@ tooltip {
   color: #cba6f7;
   min-height: 0;
 }
-

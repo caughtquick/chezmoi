@@ -1,10 +1,6 @@
 // Catppuccin Mocha Colors
-{{ $term := "foot" -}}
-{{ $term_shift := "" -}}
-{{ if eq .chezmoi.hostname "papaya" -}}
-{{   $term = "foot\" \"distrobox\" \"enter\" \"dev" -}}
-{{   $term_shift = "foot" -}}
-{{ end -}}
+{{ $term := "foot\" \"distrobox\" \"enter\" \"dev" -}}
+{{ $term_shift := "foot" -}}
 {{ $menu := "fuzzel" -}}
 
 input {
@@ -23,19 +19,19 @@ input {
     mouse {
         // natural-scroll
     }
-}
 
-output "DP-2" {
-    mode "1920x1080@165"
-    scale 1.0
+    touch {
+	map-to-output "eDP-1"
+    }
 }
 
 output "eDP-1" {
-    scale 1.0
+    scale 1.5
+    variable-refresh-rate // on-demand=true
 }
 
 layout {
-    gaps 3
+    gaps 4
     center-focused-column "never"
 
     preset-column-widths {
@@ -54,7 +50,6 @@ layout {
 
     border {
         off
-        width 1
         active-color "#b4befe"
         inactive-color "#6c7086"
     }
@@ -62,9 +57,11 @@ layout {
     background-color "#1e1e2e"
 }
 
+animations {
+    slowdown 0.6
+}
+
 spawn-at-startup "systemctl --user start graphical-session.target"
-spawn-at-startup "waybar" "-c" "{{ .chezmoi.homeDir }}/.config/waybar/config-niri.jsonc"
-spawn-at-startup "swaybg" "-i" "/home/abhijit/Pictures/wallpapers/sf_1.jpg" "-m" "fill"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 prefer-no-csd
 
@@ -74,9 +71,7 @@ spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock" "timeout" "420" "log
 binds {
     // Basics
     Mod+Return { spawn "{{ $term }}"; }
-    {{ if eq .chezmoi.hostname "papaya" -}}
     Mod+Shift+Return { spawn "{{ $term_shift }}"; }
-    {{- end }}
     Mod+Q { close-window; }
     Mod+D { spawn "{{ $menu }}"; }
     Mod+Home { spawn "wlogout"; }
