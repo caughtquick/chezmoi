@@ -1,7 +1,7 @@
 // Catppuccin Mocha Colors
 {{ $term := "foot\" \"distrobox\" \"enter\" \"dev" -}}
 {{ $term_shift := "foot" -}}
-{{ $menu := "fuzzel" -}}
+{{ $menu := printf "python3\" \"%s/coding/cqicshell/widgets/launcher.py\" \"toggle" .chezmoi.homeDir -}}
 
 input {
     keyboard {
@@ -61,8 +61,10 @@ animations {
     slowdown 0.6
 }
 
-spawn-at-startup "systemctl --user start graphical-session.target"
+spawn-at-startup "systemctl" "--user" "start" "graphical-session.target"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
+// CQIC Shell (bar, notification center, launcher)
+spawn-at-startup "{{ .chezmoi.homeDir }}/coding/cqicshell/cqicshell"
 prefer-no-csd
 
 // Idle configuration
