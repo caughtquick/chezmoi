@@ -75,7 +75,10 @@ binds {
     Mod+Return { spawn "{{ $term }}"; }
     Mod+Shift+Return { spawn "{{ $term_shift }}"; }
     Mod+Q { close-window; }
-    Mod+D { spawn "{{ $menu }}"; }
+    // repeat=false: launching the launcher toggle is not hold-repeatable.
+    // Without it, holding Mod+D spawns one full python3 process per repeat
+    // (600ms delay, then 25/s), causing toggle flapping and CPU saturation.
+    Mod+D repeat=false { spawn "{{ $menu }}"; }
     Mod+Home { spawn "wlogout"; }
     Mod+Escape { spawn "swaylock"; }
 
