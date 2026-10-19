@@ -79,7 +79,6 @@ binds {
     // Without it, holding Mod+D spawns one full python3 process per repeat
     // (600ms delay, then 25/s), causing toggle flapping and CPU saturation.
     Mod+D repeat=false { spawn "{{ $menu }}"; }
-    Mod+Home { spawn "wlogout"; }
     Mod+Escape { spawn "swaylock"; }
 
     // Reload the configuration file
