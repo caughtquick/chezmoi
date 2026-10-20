@@ -1,4 +1,5 @@
 // Catppuccin Mocha Colors
+include "~/.config/niri/theme-current.kdl"
 {{ $term := "foot\" \"distrobox\" \"enter\" \"dev" -}}
 {{ $term_shift := "foot" -}}
 {{ $menu := printf "python3\" \"%s/coding/cqicshell/widgets/launcher.py\" \"toggle" .chezmoi.homeDir -}}
@@ -44,17 +45,11 @@ layout {
 
     focus-ring {
         width 2
-        active-color "#b4befe"
-        inactive-color "#6c7086"
     }
 
     border {
         off
-        active-color "#b4befe"
-        inactive-color "#6c7086"
     }
-
-    background-color "#1e1e2e"
 }
 
 animations {
