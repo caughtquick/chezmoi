@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""Lock the session before suspend or on idle timeout.
+
+Run from swayidle's timeout and before-sleep hooks. While the before-sleep
+hook runs, swayidle holds a logind "sleep" delay inhibitor, and every process
+it spawns inherits that inhibitor fd. Running via this helper ensures inherited
+fds are closed so the inhibitor is not leaked to the daemonized locker.
+
+subprocess.run() closes inherited fds by default, and it waits for the
+locker's fork parent which exits only after the compositor confirms the lock,
+so suspend cannot race the lock surface.
+"""
+
+import os
+from pathlib import Path
+import subprocess
+import sys
+
+LOCKER = Path.home() / "coding" / "cqicshell" / "cqicshell"
+
+
+def is_locked() -> bool:
+    my_pid = os.getpid()
+    for pid_dir in Path("/proc").glob("[0-9]*"):
+        try:
+            pid = int(pid_dir.name)
+            if pid == my_pid:
+                continue
+            cmdline = (pid_dir / "cmdline").read_bytes().split(b"\0")
+            cmd_str = " ".join(arg.decode("utf-8", errors="ignore") for arg in cmdline)
+            if ("cqicshell" in cmd_str or "lock.py" in cmd_str) and any(
+                arg in ("--lock", "lock", "-l") for arg in cmdline
+            ):
+                return True
+        except (OSError, ValueError):
+            continue
+    return False
+
+
+def main() -> int:
+    # Already locked (e.g. idle timeout won the race before sleep): nothing to do.
+    if is_locked():
+        return 0
+
+    if subprocess.run(
+        ["pidof", "swaylock"],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    ).returncode == 0:
+        return 0
+
+    return subprocess.run([str(LOCKER), "--lock", "-f"]).returncode
+
+
+if __name__ == "__main__":
+    sys.exit(main())

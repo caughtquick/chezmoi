@@ -70,17 +70,15 @@ prefer-no-csd
 // 420s: suspend.
 // after-resume: explicitly power the panel back on (niri usually does this
 //       on input, but be explicit so it can never get stuck dark).
-// before-sleep: lock via the helper. A bare `swaylock -f` here leaks
-//       swayidle's logind delay-inhibitor fd into the daemonized locker, so
-//       the inhibitor stayed held and logind stalled 5s on every lid close.
-//       The helper closes inherited fds and waits for the compositor to
-//       confirm the lock before returning.
+// before-sleep: lock via the helper. The helper closes inherited fds so
+//       swayidle's logind delay-inhibitor fd is not leaked into the locker daemon,
+//       and waits for the compositor to confirm the lock before returning.
 spawn-at-startup "swayidle" "-w" \
-  "timeout" "300" "pidof swaylock >/dev/null || swaylock -f" \
+  "timeout" "300" "{{ .chezmoi.homeDir }}/.local/bin/cqicshell-before-sleep" \
   "timeout" "301" "niri msg action power-off-monitors" \
   "timeout" "420" "loginctl suspend" \
   "after-resume" "niri msg action power-on-monitors" \
-  "before-sleep" "{{ .chezmoi.homeDir }}/.local/bin/swaylock-before-sleep"
+  "before-sleep" "{{ .chezmoi.homeDir }}/.local/bin/cqicshell-before-sleep"
 
 binds {
     // Basics
@@ -91,7 +89,7 @@ binds {
     // Without it, holding Mod+D spawns one full python3 process per repeat
     // (600ms delay, then 25/s), causing toggle flapping and CPU saturation.
     Mod+D repeat=false { spawn "{{ $menu }}"; }
-    Mod+Escape { spawn "swaylock"; }
+    Mod+Escape { spawn "{{ .chezmoi.homeDir }}/coding/cqicshell/cqicshell" "--lock"; }
 
     // Reload the configuration file
     Mod+Shift+C { spawn "niri" "msg" "action" "load-config-file"; }
