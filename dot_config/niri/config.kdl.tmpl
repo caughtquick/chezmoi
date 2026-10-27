@@ -85,6 +85,10 @@ binds {
     Mod+Return { spawn "{{ $term }}"; }
     Mod+Shift+Return { spawn "{{ $term_shift }}"; }
     Mod+Q { close-window; }
+    // Upstream Niri PR #3621 (merged Oct 25, 2026) added modifier release binds:
+    //     Mod { release { spawn "{{ $menu }}"; } }
+    // Once niri > 26.04 is packaged on the system, switch to that release bind.
+    //
     // repeat=false: launching the launcher toggle is not hold-repeatable.
     // Without it, holding Mod+D spawns one full python3 process per repeat
     // (600ms delay, then 25/s), causing toggle flapping and CPU saturation.
